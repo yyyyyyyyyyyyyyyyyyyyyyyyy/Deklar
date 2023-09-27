@@ -1,0 +1,51 @@
+﻿<Window x:Class="Deklar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Deklar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800" Background="#70C1DF">
+    <Grid>
+
+        <Label Content="Formularz zgłoszenia psa" FontSize="45" FontStyle="Italic" Foreground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+        <StackPanel Background="#6BAEC7" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Imię właściciela:"/>
+            <TextBox Name="txtImieWlasciciela" Width="200" Margin="5"/>
+
+            <TextBlock Text="Nazwisko właściciela:"/>
+            <TextBox Name="txtNazwiskoWlasciciela" Width="200" Margin="5"/>
+
+            <TextBlock Text="Nazwa psa:"/>
+            <TextBox Name="txtNazwaPsa" Width="200" Margin="5"/>
+
+            <TextBlock Text="Data urodzenia psa:"/>
+            <DatePicker Name="DtB" SelectedDate="{Binding Path=DtB}" Width="200" Margin="5"/>
+
+
+            <GroupBox>
+                <GroupBox.Header>
+                <Italic>Rasa psa</Italic>
+                </GroupBox.Header>
+
+                    <WrapPanel>
+                <CheckBox x:Name="Rodowod" Content="Posiada rodowód" Margin="0,15" Width="120"></CheckBox>
+                    <Popup x:Name="popupRasa" IsOpen="{Binding ElementName=Rodowod, Path=IsChecked}" 
+                           
+                           PlacementTarget="{Binding ElementName=Rodowod}" Placement="Right"
+                           AllowsTransparency="True"
+                           PopupAnimation="Fade"
+                           VerticalOffset="-5">
+                        
+                        <TextBox Width="75"></TextBox>
+                    </Popup>
+
+                </WrapPanel>
+
+            </GroupBox>
+
+            <Button x:Name="BtnWyslij" Content="Zgłoś psa" Click="BtnWyslij_Click" Width="100" Margin="5" FontStyle="Italic"/>
+        </StackPanel>
+    </Grid>
+</Window>
